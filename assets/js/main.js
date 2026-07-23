@@ -84,18 +84,34 @@ animateGlow();
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const submitBtn = contactForm.querySelector('button[type="submit"]');
   const originalHTML = submitBtn.innerHTML;
 
   submitBtn.disabled = true;
   submitBtn.innerHTML = 'Enviando...';
+  formNote.textContent = '';
+  formNote.classList.remove('form-note-error');
 
-  setTimeout(() => {
-    formNote.textContent = '¡Gracias! Recibimos tu mensaje, te contactamos en menos de 24hs.';
-    contactForm.reset();
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      formNote.textContent = '¡Gracias! Recibimos tu mensaje, te contactamos en menos de 24hs.';
+      contactForm.reset();
+    } else {
+      throw new Error('submit failed');
+    }
+  } catch (err) {
+    formNote.textContent = 'No pudimos enviar tu mensaje. Escribinos a hola@raidenservices.com.';
+    formNote.classList.add('form-note-error');
+  } finally {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalHTML;
-  }, 900);
+  }
 });

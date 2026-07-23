@@ -847,6 +847,7 @@ img { max-width: 100%; display: block; }
 }
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-faint); }
 .form-note { font-size: 13px; text-align: center; color: #4fff9c; min-height: 16px; }
+.form-note-error { color: #ff8a8a; }
 @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
 
 /* ============ FOOTER ============ */
