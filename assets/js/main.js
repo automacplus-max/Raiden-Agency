@@ -83,6 +83,8 @@ animateGlow();
 // ============ CONTACT FORM ============
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
+const formSuccess = document.getElementById('formSuccess');
+const formSuccessReset = document.getElementById('formSuccessReset');
 
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -102,16 +104,23 @@ contactForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      formNote.textContent = '¡Gracias! Recibimos tu mensaje, te contactamos en menos de 24hs.';
       contactForm.reset();
+      contactForm.hidden = true;
+      formSuccess.hidden = false;
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       throw new Error('submit failed');
     }
   } catch (err) {
-    formNote.textContent = 'No pudimos enviar tu mensaje. Escribinos a hola@raidenservices.com.';
+    formNote.textContent = 'No pudimos enviar tu mensaje. Escribinos a raidenagencyinfo@gmail.com.';
     formNote.classList.add('form-note-error');
   } finally {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalHTML;
   }
+});
+
+formSuccessReset.addEventListener('click', () => {
+  formSuccess.hidden = true;
+  contactForm.hidden = false;
 });

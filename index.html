@@ -569,32 +569,60 @@
         <h2 class="section-title">Hablemos de <span class="text-gradient">tu negocio</span></h2>
         <p class="section-sub">Contanos qué necesitás. Te respondemos en menos de 24hs.</p>
         <div class="contact-info">
-          <div class="contact-info-item"><span>✉</span><a href="mailto:hola@raidenservices.com">hola@raidenservices.com</a></div>
-          <div class="contact-info-item"><span>💬</span><a href="#">+1 (555) 123-4567</a></div>
+          <div class="contact-info-item"><span>✉</span><a href="mailto:raidenagencyinfo@gmail.com">raidenagencyinfo@gmail.com</a></div>
+          <div class="contact-info-item"><span>📷</span><a href="https://instagram.com/raiden.services" target="_blank" rel="noopener">@raiden.services</a></div>
           <div class="contact-info-item"><span>📍</span><span>Remoto — Trabajamos con clientes en toda Latinoamérica y EE.UU.</span></div>
         </div>
       </div>
-      <form class="glass-panel contact-form reveal" id="contactForm" action="https://formspree.io/f/xpqvjvoo" method="POST">
-        <input type="hidden" name="_subject" value="Nuevo contacto desde raidenservices">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group">
-          <label for="name">Nombre</label>
-          <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+      <div class="contact-form-wrap reveal">
+        <form class="glass-panel contact-form" id="contactForm" action="https://formspree.io/f/xpqvjvoo" method="POST">
+          <input type="hidden" name="_subject" value="Nuevo contacto desde raidenservices">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="business">Nombre del negocio</label>
+              <input type="text" id="business" name="business" placeholder="Tu negocio" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="instagram">Instagram de la empresa</label>
+              <input type="text" id="instagram" name="instagram" placeholder="@tunegocio">
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono <span class="label-optional">(opcional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" placeholder="Contanos sobre tu negocio..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            Quiero más clientes
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+
+        <div class="glass-panel contact-success" id="formSuccess" hidden>
+          <div class="contact-success-icon">✓</div>
+          <h3>¡Listo! Ya recibimos tu mensaje.</h3>
+          <p>Te contactamos en menos de 24hs a tu email. Mientras tanto, revisá cómo trabajamos o mirá algunos resultados.</p>
+          <div class="contact-success-actions">
+            <a href="#proceso" class="btn btn-ghost">Ver cómo trabajamos</a>
+            <button type="button" class="btn btn-primary" id="formSuccessReset">Enviar otro mensaje</button>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" placeholder="tu@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" rows="4" placeholder="Contanos sobre tu negocio..." required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-full">
-          Quiero más clientes
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <p class="form-note" id="formNote"></p>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -625,7 +653,7 @@
     </div>
     <div class="footer-col">
       <strong>Contacto</strong>
-      <a href="mailto:hola@raidenservices.com">hola@raidenservices.com</a>
+      <a href="mailto:raidenagencyinfo@gmail.com">raidenagencyinfo@gmail.com</a>
       <a href="#contacto">Escribinos</a>
     </div>
   </div>
