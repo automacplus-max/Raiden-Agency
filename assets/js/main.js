@@ -1,3 +1,45 @@
+// ============ CASOS ANTES/DESPUÉS ============
+// Para sumar un caso nuevo, agregá un objeto a este array. No hace falta tocar el resto del código.
+// before / after: URL de la captura (o null para mostrar el placeholder "Agregar captura").
+// link: URL del sitio deployado (o null para mostrar el botón como "Próximamente").
+const CASE_STUDIES = [
+  { rubro: 'Inmobiliaria — Maldonado', before: null, after: null, link: null },
+  { rubro: 'Clínica dental', before: null, after: null, link: null },
+  { rubro: 'Gimnasio', before: null, after: null, link: null },
+];
+
+function renderCaseStudyImage(url, label) {
+  if (url) {
+    return `<div class="case-study-img"><img src="${url}" alt="${label}" loading="lazy"><span class="case-study-tag-mini">${label}</span></div>`;
+  }
+  return `<div class="case-study-img"><div class="case-study-placeholder"><span>📷</span><span>Agregar captura<br>${label.toLowerCase()}</span></div><span class="case-study-tag-mini">${label}</span></div>`;
+}
+
+function renderCaseStudyCard(item) {
+  const linkHtml = item.link
+    ? `<a href="${item.link}" target="_blank" rel="noopener" class="btn btn-ghost case-study-link">Ver en vivo</a>`
+    : `<span class="btn btn-ghost case-study-link" aria-disabled="true">Próximamente</span>`;
+
+  return `
+    <article class="case-study-card reveal">
+      <div class="case-study-compare">
+        ${renderCaseStudyImage(item.before, 'Antes')}
+        ${renderCaseStudyImage(item.after, 'Después')}
+      </div>
+      <div class="case-study-info">
+        <span class="case-study-badge">Rediseño de muestra — no solicitado</span>
+        <h3>${item.rubro}</h3>
+        ${linkHtml}
+      </div>
+    </article>
+  `;
+}
+
+const caseStudyGrid = document.getElementById('caseStudyGrid');
+if (caseStudyGrid) {
+  caseStudyGrid.innerHTML = CASE_STUDIES.map(renderCaseStudyCard).join('');
+}
+
 // ============ NAVBAR: scroll state + mobile menu ============
 const navbar = document.querySelector('.navbar');
 const navBurger = document.getElementById('navBurger');
@@ -112,7 +154,7 @@ contactForm.addEventListener('submit', async (e) => {
       throw new Error('submit failed');
     }
   } catch (err) {
-    formNote.textContent = 'No pudimos enviar tu mensaje. Escribinos a raidenagencyinfo@gmail.com.';
+    formNote.textContent = 'No pudimos enviar tu mensaje. Escribime a raidenagencyinfo@gmail.com.';
     formNote.classList.add('form-note-error');
   } finally {
     submitBtn.disabled = false;
