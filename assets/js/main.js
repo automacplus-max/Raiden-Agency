@@ -35,9 +35,16 @@ function renderCaseStudyCard(item) {
   `;
 }
 
+// La sección se oculta sola mientras ningún caso tenga imágenes cargadas.
+// En cuanto completes before/after de al menos un caso en el array, aparece sola.
 const caseStudyGrid = document.getElementById('caseStudyGrid');
-if (caseStudyGrid) {
+const caseStudySection = document.getElementById('portfolio');
+const hasRealCaseStudies = CASE_STUDIES.some(item => item.before || item.after);
+
+if (caseStudyGrid && hasRealCaseStudies) {
   caseStudyGrid.innerHTML = CASE_STUDIES.map(renderCaseStudyCard).join('');
+} else if (caseStudySection) {
+  caseStudySection.hidden = true;
 }
 
 // ============ NAVBAR: scroll state + mobile menu ============
